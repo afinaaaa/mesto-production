@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"
+    />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Mesto</title>
+    
+    <script type="module" crossorigin src="./assets/index-99c69b4d.js"></script>
+    <link rel="stylesheet" href="./assets/index-0526eab0.css">
+  </head>
+  <body class="page">
+    <div class="page__content">
+      <header class="header page__section">
+        <img
+          src="./assets/logo-4ab64560.svg"
+          alt="Логотип Место"
+          class="logo header__logo"
+        />
+      </header>
+      <main class="content">
+        <section class="profile page__section">
+          <div class="profile__image-container">
+            <div class="profile__image">
+              <img class="profile__avatar-actual-image" src="#" alt="Аватар">
+            </div>
+          </div>
+          <div class="profile__info">
+            <h1 class="profile__title"></h1>
+            <button class="profile__edit-button" type="button" aria-label="Редактировать профиль"></button>
+            <p class="profile__description"></p>
+          </div>
+          <button class="profile__add-button" type="button" aria-label="Добавить карточку"></button>
+        </section>
+        <section class="places page__section">
+          <ul class="places__list"></ul>
+        </section>
+      </main>
+      <footer class="footer page__section">
+        <p class="footer__copyright">© 2025 Mesto Russia</p>
+      </footer>
+
+      <div class="popup popup_type_edit">
+        <div class="popup__content">
+          <button type="button" class="popup__close" aria-label="Закрыть"></button>
+          <h3 class="popup__title">Редактировать профиль</h3>
+          <form class="popup__form" name="edit-profile" novalidate>
+            <label class="popup__label">
+              <input
+                type="text"
+                name="name"
+                id="name"
+                class="popup__input popup__input_type_name"
+                placeholder="Имя"
+                minlength="2"
+                maxlength="40"
+                pattern="^[a-zA-Zа-яА-Я\s\-]+$"
+                data-error-message="Разрешены только латинские, кириллические буквы, знаки дефиса и пробелы"
+                required
+              />
+              <span class="popup__error" id="name-error"></span>
+            </label>
+            <label class="popup__label">
+              <input
+                type="text"
+                name="about"
+                id="about"
+                class="popup__input popup__input_type_description"
+                placeholder="О себе"
+                minlength="2"
+                maxlength="200"
+                required
+              />
+              <span class="popup__error" id="about-error"></span>
+            </label>
+            <button
+              type="submit"
+              class="button popup__button popup__button_disabled"
+              aria-label="Сохранить"
+              disabled
+            >
+              Сохранить
+            </button>
+          </form>
+        </div>
+      </div>
+
+      <div class="popup popup_type_new-card">
+        <div class="popup__content">
+          <button type="button" class="popup__close" aria-label="Закрыть"></button>
+          <h3 class="popup__title">Новое место</h3>
+          <form class="popup__form" name="new-place" novalidate>
+            <label class="popup__label">
+              <input
+                type="text"
+                name="card-name"
+                id="card-name"
+                class="popup__input popup__input_type_card-name"
+                placeholder="Название"
+                minlength="2"
+                maxlength="30"
+                pattern="^[a-zA-Zа-яА-Я\s\-]+$"
+                data-error-message="Разрешены только латинские, кириллические буквы, знаки дефиса и пробелы"
+                required
+              />
+              <span class="popup__error" id="card-name-error"></span>
+            </label>
+            <label class="popup__label">
+              <input
+                type="url"
+                name="link"
+                id="link"
+                class="popup__input popup__input_type_url"
+                placeholder="Ссылка на картинку"
+                required
+              />
+              <span class="popup__error" id="link-error"></span>
+            </label>
+            <button
+              type="submit"
+              class="button popup__button popup__button_disabled"
+              aria-label="Создать"
+              disabled
+            >
+              Создать
+            </button>
+          </form>
+        </div>
+      </div>
+
+      <div class="popup popup_type_image">
+        <div class="popup__content popup__content_type_image">
+          <button type="button" class="popup__close" aria-label="Закрыть"></button>
+          <img src="#" alt="" class="popup__image" />
+          <p class="popup__caption"></p>
+        </div>
+      </div>
+
+      <div class="popup popup_type_confirm">
+        <div class="popup__content">
+          <button type="button" class="popup__close" aria-label="Закрыть"></button>
+          <h3 class="popup__title">Вы уверены?</h3>
+          <form class="popup__form" name="confirm-delete">
+            <button
+              type="submit"
+              class="button popup__button"
+              aria-label="Да"
+            >
+              Да
+            </button>
+          </form>
+        </div>
+      </div>
+
+      <div class="popup popup_type_avatar">
+        <div class="popup__content">
+          <button type="button" class="popup__close" aria-label="Закрыть"></button>
+          <h3 class="popup__title">Обновить аватар</h3>
+          <form class="popup__form" name="update-avatar" novalidate>
+            <label class="popup__label">
+              <input
+                type="url"
+                name="avatar"
+                id="avatar"
+                class="popup__input popup__input_type_avatar"
+                placeholder="Ссылка на аватар"
+                required
+              />
+              <span class="popup__error" id="avatar-error"></span>
+            </label>
+            <button
+              type="submit"
+              class="button popup__button popup__button_disabled"
+              aria-label="Сохранить"
+              disabled
+            >
+              Сохранить
+            </button>
+          </form>
+        </div>
+      </div>
+
+      <div class="popup popup_type_info">
+        <div class="popup__content popup__content_content_info">
+          <button type="button" class="popup__close" aria-label="Закрыть"></button>
+          <h3 class="popup__title"></h3>
+          <dl class="popup__info"></dl>
+          <h4 class="popup__text"></h4>
+          <ul class="popup__list"></ul>
+        </div>
+      </div>
+    </div>
+
+    
+
+    <template id="card-template">
+      <li class="places__item card">
+        <img class="card__image" src="#" alt="" />
+        <div class="card__control">
+          <button type="button" class="card__control-button card__control-button_type_info" aria-label="Информация"></button>
+          <button type="button" class="card__control-button card__control-button_type_delete" aria-label="Удалить"></button>
+        </div>
+        <div class="card__description">
+          <h2 class="card__title"></h2>
+          <div class="card__like-container">
+            <button type="button" class="card__like-button" aria-label="Нравится"></button>
+            <span class="card__like-counter">0</span>
+          </div>
+        </div>
+      </li>
+    </template>
+
+    <template id="popup-info-definition-template">
+      <div class="popup__info-item">
+        <dt class="popup__info-term"></dt>
+        <dd class="popup__info-description"></dd>
+      </div>
+    </template>
+
+    <template id="popup-info-user-preview-template">
+      <li class="popup__list-item popup__list-item_type_badge"></li>
+    </template>
+  </body>
+</html> 
